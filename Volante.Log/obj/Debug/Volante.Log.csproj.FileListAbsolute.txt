@@ -1,0 +1,10 @@
+D:\Lab\Volante\Volante.Log\bin\Debug\Volante.Log.dll
+D:\Lab\Volante\Volante.Log\bin\Debug\Volante.Log.pdb
+D:\Lab\Volante\Volante.Log\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Log\obj\Debug\Volante.Log.dll
+D:\Lab\Volante\Volante.Log\obj\Debug\Volante.Log.pdb
+D:\Lab\GitHub\Volante\Volante.Log\bin\Debug\Volante.Log.dll
+D:\Lab\GitHub\Volante\Volante.Log\bin\Debug\Volante.Log.pdb
+D:\Lab\GitHub\Volante\Volante.Log\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\GitHub\Volante\Volante.Log\obj\Debug\Volante.Log.dll
+D:\Lab\GitHub\Volante\Volante.Log\obj\Debug\Volante.Log.pdb

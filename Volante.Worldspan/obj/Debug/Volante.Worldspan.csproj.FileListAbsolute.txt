@@ -1,0 +1,10 @@
+D:\Lab\Volante\Volante.Worldspan\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Worldspan\bin\Debug\Volante.Worldspan.dll
+D:\Lab\Volante\Volante.Worldspan\bin\Debug\Volante.Worldspan.pdb
+D:\Lab\Volante\Volante.Worldspan\obj\Debug\Volante.Worldspan.dll
+D:\Lab\Volante\Volante.Worldspan\obj\Debug\Volante.Worldspan.pdb
+D:\Lab\GitHub\Volante\Volante.Worldspan\bin\Debug\Volante.Worldspan.dll
+D:\Lab\GitHub\Volante\Volante.Worldspan\bin\Debug\Volante.Worldspan.pdb
+D:\Lab\GitHub\Volante\Volante.Worldspan\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\GitHub\Volante\Volante.Worldspan\obj\Debug\Volante.Worldspan.dll
+D:\Lab\GitHub\Volante\Volante.Worldspan\obj\Debug\Volante.Worldspan.pdb

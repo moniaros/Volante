@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.amadeus.com/VLSSOQ_04_1_1A" xmlns="http://xml.amadeus.com/VLSSOQ_04_1_1A" elementFormDefault="qualified">
+  <xs:element name="Security_SignOut">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">New Sign Out</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="conversationClt" minOccurs="0" type="ConversationIDType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">It contains conversation properties between the SI and the JFE.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ConversationIDType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This segment stores all conversation porperties in the core of the message</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="senderIdentification" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Sender identification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recipientIdentification" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Recipient identification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="senderInterchangeControlReference" type="AlphaNumericString_Length1To14">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Sender's interchange control reference</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recipientInterchangeControlReference" type="AlphaNumericString_Length1To14">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Recipient's interchange control reference</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlphaNumericString_Length1To35">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..35</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To14">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..14</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="14" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+<!-- SchemaRules="2010/01"-->
+<!--Created with SchemaBuilder 4.2 by Amadeus S.A.S.-->
+<!--"Amadeus Proprietary and Confidential Information: unauthorized use and disclosure strictly forbidden. 2010 - Amadeus s.a.s - All Rights Reserved."-->
+<!--Build Key:
+1F8B08000000000000009553C16EDB300CBDEB2B845D761892385D0F6D001DDC262906346997643B050854897184CA9227CA45BDA2FF3ECA76DA0C3B6CBB1814293F3EBD47DECC96B355BE994D77774B71968DC783EC6C909DF379305A363CBB987CBE9C6417FC66B1F99465932C63F9228F4D053837169C2C4150627725D1A84D4A0F9F51B30789B0A41A56528138C4584D46A3E7D20E652935D43854BE1C317500F5B8A66F29450C3530E535204414CEBB742A4B7074EA6B65255D935085ABADA544D504531CA2F89077A8FC3EF82A188832345C3ACDAFBDDB1B4D18465AFEC5ED7D286534DE4D78ED641D0F3E989FA0798DD05ED70695F55807E0188351D1369CFE79309A30869CD4C9F8801F9BE1500E319DADE5ABC403F98AD88727D0C30F4CC35ED636DE842AA9A2C55E5A04A67DFD60610D3F6A700AEE655487EE75E0AEFE493270EF775E920DAFBB972708488FA228800582A14816D4A079657B3269555B92CC27BFDA736B5AFB738AFE0260BD92B657DCFA429B20A693ED4C9BBD5471E3BDC5ED6CB39B1A8CD2C56BF2889C23CFB60B191E211A577477B07519B7B7BE201857B41C8CBE73B6612584027A81DA786EC06A5CFB10DF84A3372351CA31A9F97B6E4A7E1BDBCF8CFB2F752A6F5C5C423C3122781F4FC4611DF12421A6F5C846D9B8CFE1DC87DC1A42EC2734796F14E09426873AD21076B26129434C68DF9C5126363DFD18A443DBCE23A922485C1CF5C89B7C317AD1600D91973430AF43AAB2444A9FAE0B4DC7F571473A4CCAB402B50B6A9C62CF68E35D1DAB3ACEBDD510444A3036182C3AF13E2237EF7B3118B04E1A31CED9497F91DFE7BB35A83A10FDDD389334C8A5344EDCAED7471BB80C20C565763C8BEF54BCFBCA2A9A78830772B2D3B733418C297A32C91971D649215BD5C45B9BB5291C5167472FFEACF4D68AEC9CFD0245D0C279C7040000
+-->
+

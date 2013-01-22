@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.amadeus.com/VLSSLQ_06_1_1A" xmlns="http://xml.amadeus.com/VLSSLQ_06_1_1A" elementFormDefault="qualified">
+  <xs:element name="Security_Authenticate">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Message used to authenticate any user through the Logon and Security Server.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="conversationClt" minOccurs="0" type="ConversationIDType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">It contains conversation properties between the SI and the JFE.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="userIdentifier" maxOccurs="2" type="UserIdentificationType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This segment is dedicated to specify a user identifier. The first one  for the main logon and the second one to the delegate user if any. Either a SignId or a UserId can be used, depending on DE 9972 value (Z for Sign Id, U for User Id). The value itself is specified in DE 9904.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="dutyCode" minOccurs="0" type="ReferenceInformationTypeI">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This segment can be used to specify an AMADEUS Duty Code for the TPF sign in. DUT must be specified in the qualifier.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="systemDetails" minOccurs="0" type="SystemDetailsInfoType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This segment is used to specify the system which is used by the user. The workstation Id (DE 3148) can be specified to determine the location in terms of office of the request (if no workstation Id, the source office must be specified in the first UID segment). Moreover, if a User Id is used instead of a Sign Id, the organization must be specified in DE 9906. WorkstationId is actually the Atid</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="passwordInfo" minOccurs="0" maxOccurs="2" type="BinaryDataType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">These segments contain the password information. Two segments can be used in case of a New password is required.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="fullLocation" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Full Location of the workstation</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="workstationPos" type="PlaceLocationIdentificationTypeU">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Stores the location of the workstation.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="locationInfo" minOccurs="0" type="TerminalLocationType">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Contains terminal and facility or worstation id.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="applicationId" minOccurs="0" type="ApplicationType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Conatins Baleb and INdex of application. ex: JFE 1</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ApplicationIdentificationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Used to specify application details</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="internalId" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Application Label. Exemple : NGD. Label is the first part of the ApplicationId. Label is considered as an Internal Id, as it is the key of the application.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="seqNumber" minOccurs="0" type="AlphaNumericString_Length1To6">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Application Index. Index is part of the ApplicationId.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ApplicationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This segment is used to specify details on an application</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="applicationDetails" type="ApplicationIdentificationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Identification of the application.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BinaryDataType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">to carry binary data within an Edifact segment</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dataLength" type="NumericInteger_Length1To15">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Length of the data element 114Z. The unit is given in number of binary characters (bytes).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dataType" type="AlphaNumericString_Length1To1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">type of the data. When E is specified, this means that the password is not crypted. When B specified, this means that the password is crypted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="binaryData" type="AlphaNumericString_Length1To99999">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">used to store binary data</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ConversationIDType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This segment stores all conversation porperties in the core of the message</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="senderIdentification" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Sender identification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recipientIdentification" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Recipient identification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="senderInterchangeControlReference" type="AlphaNumericString_Length1To14">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Sender's interchange control reference</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recipientInterchangeControlReference" type="AlphaNumericString_Length1To14">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Recipient's interchange control reference</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FacilityInformationType">
+    <xs:sequence>
+      <xs:element name="type" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Type of the Facility, coded. E.g.: - Check-In Desk - Gate... The codeset is not yet defined.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifier" minOccurs="0" type="AlphaNumericString_Length1To5">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Unique Reference to a Facility of a given Type in a terminal. This can be several kind of values. E.g.: - 25 (means Gate 25 when associated  Facility Type= Gate, or Check-in Desk 25 when associated Facility Type= Check-In Desk) - BAEXC: means Ba-Executive Club Lounge when associated to</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationIdentificationBatchTypeU">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Identification of a location by code or name</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" minOccurs="0" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Airport(139) or City (227) code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qualifier" minOccurs="0" type="AlphaNumericString_Length1To17">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Discriminator between airport or city.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OriginatorIdentificationDetailsTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To identify the originator of the travel request.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="sourceOffice" type="AlphaNumericString_Length1To9">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">AMADEUS Office Id the workstation belongs to. Must be empty if a workstation Id is specified in the SYS segment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlaceLocationIdentificationTypeU">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To identify a place or a location and/or related locations.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="locationType" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Type of location</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="locationDescription" minOccurs="0" type="LocationIdentificationBatchTypeU">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Description of the location</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="firstLocationDetails" minOccurs="0" type="RelatedLocationOneIdentificationTypeU">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Details on the location</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferenceInformationTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To provide specific reference identification for a traveller.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dutyCodeDetails" type="ReferencingDetailsTypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This composite  duty code information. For Duty code info, DUT must be specified in the Qualifier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReferencingDetailsTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To provide reference identification.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="referenceQualifier" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Code determining if the data is a tree identifier, a category identifier or a parent category identifier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="referenceIdentifier" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Data value.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RelatedLocationOneIdentificationTypeU">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Identification the first related location by code or name.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" minOccurs="0" type="AlphaNumericString_Length1To25">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Terminal (180) or Building(300) code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qualifier" minOccurs="0" type="AlphaNumericString_Length1To17">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Discriminator between airport or city.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemDetailsInfoType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Used to specify a system</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="workstationId" minOccurs="0" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This field contains a workstation Identifier. It is used to retrieve the physical origin of the request (mainly for printing purposes) .</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="organizationDetails" minOccurs="0" type="SystemDetailsTypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used to specify an organization when User Id logon is used.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="idQualifier" minOccurs="0" type="AlphaNumericString_Length1To1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Explain what type of workstation ID is stored in data element 3148</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SystemDetailsTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To identify by code or name and location the system that originates or delivers the message for a third party.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="organizationId" type="AlphaNumericString_Length1To35">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This DE is used to specify an organization Id such as BA, 1A or QF.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TerminalLocationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To convey informations about functional and physical locations in a terminal</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="facilityDetails" type="FacilityInformationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To convey information related to a specific Facility.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserIdentificationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This segment is used to identify a user.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="originIdentification" minOccurs="0" type="OriginatorIdentificationDetailsTypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To specify the source office the workstation belongs to. Not used in the second repetition of the segment (if any, it will not be taken into account). Used when no workstation Id is specified in SYS segment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="originatorTypeCode" type="AlphaNumericString_Length1To1">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used to specify which kind of info is given in DE 9900.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="originator" type="AlphaNumericString_Length1To30">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Authority code of the requester If Sign Id : (Numeric Sine)+(Agent Initials) ex : 0001XV). If user Id : Logon User Id.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlphaNumericString_Length1To35">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..35</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To14">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..14</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="14" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To1">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an1</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To30">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..30</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumericInteger_Length1To15">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: n..15</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="-?[0-9]{1,15}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To99999">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..99999</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="99999" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To3">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..3</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To9">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..9</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="9" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To17">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..17</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="17" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To25">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..25</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="25" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To5">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..5</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To6">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..6</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+<!-- SchemaRules="2010/01"-->
+<!--Created with SchemaBuilder 4.2 by Amadeus S.A.S.-->
+<!--"Amadeus Proprietary and Confidential Information: unauthorized use and disclosure strictly forbidden. 2010 - Amadeus s.a.s - All Rights Reserved."-->
+<!--Build Key:
+1F8B08000000000000009593C16EDB300C86EF7A0AA1971D86384E370C6B001DDC262906346997643B050854894984CA9227CA45BDA2EF3ECA76DAEC306CBB181425FFA2BE9FBC9E2EA6CB623D9D6C6F17E23C1F8D06F9F920FFC867C168D9F0FCF3F8C3C538FFCCAFE7EBF7793ECE7356CC8BD854803363C1C9120425B697128D5AA774F6849ADD4B8405ED61251588438CD578387C2A6D264BA9A1C64CF972C8D401D4C38ABEA51431D4C094D780105138EFD2AA2CC1D1AADF2B2BE99AA42A5C6D2D25AA2698FD218AB3A253E577C157C14094A1E1D2697EE5DDCE68D230D2F22F6EE74329A3F16ECC6B27EB78F0C1FC04CD6B84F6B836A8ACC73A00C7188C8AB6E1F4CFBDD1A49171A293F3013F5E8699CC30ADADE5CB5407F225551F1E4167674CC34ED6365E872A51D162272D02D3BEBEB7B0821F3538057732AA43F73A7097FF840CDCDB99E764C3CBF6F91102D2A3280A60816428927BBAA079613B3269595B42E6935FEDBA35ADFD39457F11B05E49DB13B77EAF4D1093F166AACD4EAAB8F6DEE266BADE4E0C46E9E2157944CE91679BB90C0F108DDB7767B0751937377E4F326EDFD660F4ADB30D2B21ECA107D4C6330356E3CA87F80A8EDE8C54528189E6EFB909F96D6CDF33EEBFE854DEB8B880786244F03E9EC0615DE10921A6F1C887F9A8CFE1CC87C21A52EC3B34796F14E0843A876EA426ECB06129434C6ADF9C5126367DF9314887B6ED47A222082E0E7BE575311F3E6BB0868A97D4302F19EDB254943E1D17EA8EABE38C749A946901B5036A9C624F68E36D1DAB3ACEBCD510444A303618CC3B78EF909BB7B9180C5887468C0A7672BF28EE8AED0A541DA8FCED2897D4C8A5344EDCAC56471BB80C20C5457E5C8BEFB479F39555D4F1060FE464C7B733418C287A34C9190A5B14B2A5265EAF296840D3E82A19811D0DF9C3766FB2C83FB15FC38E0144D1040000
+-->
+

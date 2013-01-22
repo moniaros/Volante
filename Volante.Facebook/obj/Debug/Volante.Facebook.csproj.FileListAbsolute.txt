@@ -1,0 +1,10 @@
+D:\Lab\Volante\Volante.Facebook\bin\Debug\Volante.Facebook.dll
+D:\Lab\Volante\Volante.Facebook\bin\Debug\Volante.Facebook.pdb
+D:\Lab\Volante\Volante.Facebook\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Facebook\obj\Debug\Volante.Facebook.dll
+D:\Lab\Volante\Volante.Facebook\obj\Debug\Volante.Facebook.pdb
+D:\Lab\GitHub\Volante\Volante.Facebook\bin\Debug\Volante.Facebook.dll
+D:\Lab\GitHub\Volante\Volante.Facebook\bin\Debug\Volante.Facebook.pdb
+D:\Lab\GitHub\Volante\Volante.Facebook\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\GitHub\Volante\Volante.Facebook\obj\Debug\Volante.Facebook.dll
+D:\Lab\GitHub\Volante\Volante.Facebook\obj\Debug\Volante.Facebook.pdb

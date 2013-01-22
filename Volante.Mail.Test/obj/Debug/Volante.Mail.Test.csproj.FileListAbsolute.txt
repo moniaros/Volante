@@ -1,0 +1,10 @@
+D:\Lab\Volante\Volante.Mail.Test\bin\Debug\Volante.Mail.Test.dll
+D:\Lab\Volante\Volante.Mail.Test\bin\Debug\Volante.Mail.Test.pdb
+D:\Lab\Volante\Volante.Mail.Test\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Mail.Test\obj\Debug\Volante.Mail.Test.dll
+D:\Lab\Volante\Volante.Mail.Test\obj\Debug\Volante.Mail.Test.pdb
+D:\Lab\GitHub\Volante\Volante.Mail.Test\bin\Debug\Volante.Mail.Test.dll
+D:\Lab\GitHub\Volante\Volante.Mail.Test\bin\Debug\Volante.Mail.Test.pdb
+D:\Lab\GitHub\Volante\Volante.Mail.Test\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\GitHub\Volante\Volante.Mail.Test\obj\Debug\Volante.Mail.Test.dll
+D:\Lab\GitHub\Volante\Volante.Mail.Test\obj\Debug\Volante.Mail.Test.pdb

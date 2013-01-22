@@ -1,0 +1,5 @@
+D:\Lab\Volante\Volante.Flights.Test\bin\Debug\Volante.Flights.Test.dll
+D:\Lab\Volante\Volante.Flights.Test\bin\Debug\Volante.Flights.Test.pdb
+D:\Lab\Volante\Volante.Flights.Test\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Flights.Test\obj\Debug\Volante.Flights.Test.dll
+D:\Lab\Volante\Volante.Flights.Test\obj\Debug\Volante.Flights.Test.pdb

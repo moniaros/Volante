@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.amadeus.com/VLSSLR_06_1_1A" xmlns="http://xml.amadeus.com/VLSSLR_06_1_1A" elementFormDefault="qualified">
+  <xs:element name="Security_AuthenticateReply">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">New Local Authentication V5 -- Reply
+Message response used after user authentication through the Logon and Security Server.
+Contains the result of the process of authentication, including the error messages in case of failure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="errorSection" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Group dedicated to application error details. Only present if process fails.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="applicationError" type="ApplicationErrorInformationType">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Application Error</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="interactiveFreeText" minOccurs="0" type="InteractiveFreeTextTypeI">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">Supplementary Info on the Error.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="processStatus" minOccurs="0" type="ResponseAnalysisDetailsType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This segment is only used if process is OK. In that case P is specified.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="organizationInfo" minOccurs="0" type="OrganizationType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">This segment is used to specify organization details associated with the user.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="conversationGrp" minOccurs="0" type="BusinessProcessIdType">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Identifier of a group of conversation, shared by sevreal mono-signed conversations.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ApplicationErrorDetailType">
+    <xs:sequence>
+      <xs:element name="errorCode" type="AlphaNumericString_Length1To5">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Code identifying the data validation error condition.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="errorCategory" minOccurs="0" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Identification of a code list.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="errorCodeOwner" minOccurs="0" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Code identifying the agency responsible for a code list.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ApplicationErrorInformationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To identify the type of application error within a message.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="errorDetails" type="ApplicationErrorDetailType">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Application error details.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BusinessProcessIdType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To convey a process ID</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="processIdentifier" type="AlphaNumericString_Length1To10">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">A unique reference to identify the process/business</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FreeTextQualificationTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify the type, purpose, and language of free text and whether any action is required.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="subject" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Subject</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="infoType" minOccurs="0" type="AlphaNumericString_Length1To4">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Info Type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="language" minOccurs="0" type="AlphaNumericString_Length1To3">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Language</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InteractiveFreeTextTypeI">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To provide free text information.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="freeTextQualif" minOccurs="0" type="FreeTextQualificationTypeI">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Free Text Qualifier</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="freeText" minOccurs="0" maxOccurs="99" type="AlphaNumericString_Length1To70">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Free Text</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganizationIdentificationType">
+    <xs:sequence>
+      <xs:element name="label" type="AlphaNumericString_Length1To10">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Organization label (Company Id).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrganizationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">This Segment is used to specify Organization Details</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="organizationDetails" type="OrganizationIdentificationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This composite is used to specify an organization details</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResponseAnalysisDetailsType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">To specify the type of query and the processing status associated with this response.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="statusCode" type="AlphaString_Length1To6">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">P must be specified when status of the process is OK.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlphaNumericString_Length1To70">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..70</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="70" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaString_Length1To6">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: a..6</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To10">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..10</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To5">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..5</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To3">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..3</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AlphaNumericString_Length1To4">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Format limitations: an..4</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+<!-- SchemaRules="2010/01"-->
+<!--Created with SchemaBuilder 4.2 by Amadeus S.A.S.-->
+<!--"Amadeus Proprietary and Confidential Information: unauthorized use and disclosure strictly forbidden. 2010 - Amadeus s.a.s - All Rights Reserved."-->
+<!--Build Key:
+1F8B080000000000000095534D6FDB300CBDEB5708BDEC30C471BA0FB40174709BA418D0A44592F55420502526112A4B9E2877F58AFEF751B6D366A76D178322E547EABDC7ABE962BA2CD6D3C9E666214EF3D168909F0EF2CF7C168C960DCFCFC69FCEC7F919BF9AAF3FE6F938CF59312F625301CE8C05274B1094D85C48346A9DD2D9336AF620111654C34A2A10FB18ABF170F85CDA4C9652438D99F2E590A93DA8C7157D4B2962A88129AF0121A270DEA5535982A3535F2B2BE99A842A5C6D2D25AA2698DD3E8A93A243E5B7C157C14094A1E1D2697EE9DDD668C230D2F26F6EEB4329A3F16ECC6B27EBB8F7C1FC02CD6B84F6BA36A8ACC73A00C7188C8AB6E1F4CF83D18491716227E7037E688699CC309DADE5CB3407F2254D1F9E4067274CC356D6365E852AB1A2C5565A04A67DFD6061053F6A700A6E6554FBEE75E02EFE893270EF775E920CAF9B972708488FA228800582A148EEA841F3CAB624D2B2B644994F7AB5E756B4F6E714FD05C07A256DCFB8F53B6D82988CEFA7DA6CA58A6BEF2DDE4FD79B89C1285DBC248D4839D2EC7E2EC32344E376DD1D6C55C6FB6BBF2318B76B6730FAC6D986951076D013D4C6330356E3CA87F8461CBD1969A402139B7FE626A4B7B1BD67DC7FB15379E3E202E29110C1FB78440EEB064F14625A8F7C988FFA1CCE7C28AC21C4DEA1497BA30027E41CEA4826EC68C3528698D0BE3BA34C6CFAF163900E6DEB47624510B938EC91D7C57CF8A2C11A1A5E92615E33AAB234943E5E1772C7E561473A4CCAB404B50B6A9C62CF68E34D1DAB3ACEBCD510444A303618CC3BF23E2037EF7B3118B08E1A312AD8517F51DC169B15A83AD0F89B512EC9C8A5344E5CAF560719B80C20C5797E388B3B2A164B5691E30DEE49C98EDF4E0431A2E8C92465286CA9902D6BE2AD4D410B9A5657C908EC208858C0CF25943EC251997EBBFBB2848ABCD4AB2DF2AFEC370F259075DA040000
+-->
+

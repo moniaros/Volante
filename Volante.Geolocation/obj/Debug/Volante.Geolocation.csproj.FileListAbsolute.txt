@@ -1,0 +1,10 @@
+D:\Lab\Volante\Volante.Geolocation\bin\Debug\Volante.Geolocation.dll
+D:\Lab\Volante\Volante.Geolocation\bin\Debug\Volante.Geolocation.pdb
+D:\Lab\Volante\Volante.Geolocation\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Geolocation\obj\Debug\Volante.Geolocation.dll
+D:\Lab\Volante\Volante.Geolocation\obj\Debug\Volante.Geolocation.pdb
+D:\Lab\GitHub\Volante\Volante.Geolocation\bin\Debug\Volante.Geolocation.dll
+D:\Lab\GitHub\Volante\Volante.Geolocation\bin\Debug\Volante.Geolocation.pdb
+D:\Lab\GitHub\Volante\Volante.Geolocation\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\GitHub\Volante\Volante.Geolocation\obj\Debug\Volante.Geolocation.dll
+D:\Lab\GitHub\Volante\Volante.Geolocation\obj\Debug\Volante.Geolocation.pdb

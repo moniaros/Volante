@@ -1,0 +1,14 @@
+D:\Lab\Volante\Volante.Flights.Domain\bin\Debug\Volante.Flights.Domain.dll
+D:\Lab\Volante\Volante.Flights.Domain\bin\Debug\Volante.Flights.Domain.pdb
+D:\Lab\Volante\Volante.Flights.Domain\bin\Debug\Volante.Domain.dll
+D:\Lab\Volante\Volante.Flights.Domain\bin\Debug\Volante.Domain.pdb
+D:\Lab\Volante\Volante.Flights.Domain\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\Volante\Volante.Flights.Domain\obj\Debug\Volante.Flights.Domain.dll
+D:\Lab\Volante\Volante.Flights.Domain\obj\Debug\Volante.Flights.Domain.pdb
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\bin\Debug\Volante.Flights.Domain.dll
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\bin\Debug\Volante.Flights.Domain.pdb
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\bin\Debug\Volante.Domain.dll
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\bin\Debug\Volante.Domain.pdb
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\obj\Debug\ResolveAssemblyReference.cache
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\obj\Debug\Volante.Flights.Domain.dll
+D:\Lab\GitHub\Volante\Volante.Flights.Domain\obj\Debug\Volante.Flights.Domain.pdb
